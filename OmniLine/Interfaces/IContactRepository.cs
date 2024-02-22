@@ -9,7 +9,7 @@ namespace OmniLine.Interfaces
         bool Update(Contact contact);
         bool Save();
         Task<IEnumerable<Contact>> GetAll();
-        Task<Contact> GetId(long id);
+        Task<Contact> GetById(long id);
         Task<Contact> GetByCounterAgent(long counterAgentId);
         Task<int> GetCount();
 
