@@ -5,3 +5,33 @@
 }
 @model IEnumerable<Contact>
 
+
+<div>
+    <div style="margin-bottom:2px;" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md-2" type="button">Добавить</button>
+        <button class="btn btn-primary disabled" type="button">Редактировать</button>
+    </div>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.DateCreate</td>
+                    <td>@item.DateEdit</td>
+                    <td>@item.FIO</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
