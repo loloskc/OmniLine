@@ -19,6 +19,8 @@ namespace OmniLine.Controllers
             IEnumerable<Contact> contacts = await _contactRepository.GetAll();
             return View(contacts);
         }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
