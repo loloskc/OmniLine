@@ -20,6 +20,11 @@ namespace OmniLine.Controllers
             return View(contacts);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
