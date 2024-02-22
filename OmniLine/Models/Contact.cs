@@ -13,7 +13,8 @@ namespace OmniLine.Models
         public string Email { get; set; }
         [ForeignKey("CounterAgent")]
         public long? CounterAgentId { get; set; }
-        public int? CounterAgent { get; set; }
+        
+        public CounterAgent? CounterAgent { get; set; }
     }
 }
 

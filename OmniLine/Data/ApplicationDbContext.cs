@@ -18,6 +18,12 @@ namespace OmniLine.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Contact>().HasIndex(e =>e.Email).IsUnique();
             modelBuilder.Entity<CounterAgent>().HasIndex(c=>c.Name).IsUnique();
+
+            modelBuilder.Entity<Contact>()
+                .HasOne(e => e.CounterAgent)
+                .WithMany(c => c.Contacts)
+                .HasForeignKey(s => s.CounterAgentId);
+
         }
 
 
