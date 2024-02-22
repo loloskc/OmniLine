@@ -16,3 +16,4 @@ namespace OmniLine.Models
         public int? CounterAgent { get; set; }
     }
 }
+
