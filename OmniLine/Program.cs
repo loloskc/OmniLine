@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using OmniLine.Data;
 using OmniLine.Models;
+using OmniLine.Interfaces;
+using OmniLine.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<ICounterAgentRepository, CounterAgentRepository>();  
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
