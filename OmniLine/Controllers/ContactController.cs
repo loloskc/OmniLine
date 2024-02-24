@@ -23,7 +23,7 @@ namespace OmniLine.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
