@@ -31,8 +31,8 @@ namespace OmniLine.Controllers
         [HttpPost]
         public IActionResult Create(CreateAgentVM vmModel)
         {
+            vmModel.Agent.DateCreate = DateTime.Now.ToString();
             var agent = vmModel.Agent;
-
             if(ModelState.IsValid)
             {
                 _counterAgentRepository.Add(agent);
