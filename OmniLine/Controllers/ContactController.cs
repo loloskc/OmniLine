@@ -49,6 +49,21 @@ namespace OmniLine.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var contact =  await _contactRepository.GetById(id);
+            if (contact != null)
+            {
+                _contactRepository.Delete(contact);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

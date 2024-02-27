@@ -43,7 +43,7 @@ namespace OmniLine.Repository
 
         public async Task<Contact> GetById(long id)
         {
-            return await _context.Contacts.Include(c => c.CounterAgentId).FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Contacts.FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public bool Save()

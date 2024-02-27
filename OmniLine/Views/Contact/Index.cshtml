@@ -15,10 +15,10 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Дата создная</th>
-                <th scope="col">Дата изменение</th>
                 <th scope="col">ФИО</th>
                 <th scope="col">Email</th>
+                <th scope="col">Дата создная</th>
+                <th scope="col">Дата изменение</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -27,13 +27,13 @@
             {
                 <tr>
                     <th scope="row">@item.Id</th>
-                    <td>@item.DateCreate</td>
-                    <td>@item.DateEdit</td>
                     <td>@item.FIO</td>
                     <td>@item.Email</td>
+                    <td>@item.DateCreate</td>
+                    <td>@item.DateEdit</td>
                     <td align="center">
-                        <button type="button" class="btn btn-primary">Удалить</button>
-                        <button type="button" class="btn btn-primary">Изменить</button>
+                        <a asp-controller="Contact" asp-action="Delete" asp-route-id="@item.Id" type="button" class="btn btn-primary">Удалить</a>
+                        <a asp-controller="Contact" asp-action="Edit" asp-route-id="@item.Id" type="button" class="btn btn-primary">Изменить</a>
                     </td>
                 </tr>
             }
