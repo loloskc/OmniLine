@@ -33,10 +33,11 @@ namespace OmniLine.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateContactVM viewModel)
-        {
+            {
+            viewModel.Contact.DateCreate = DateTime.Now.ToString();
             var contact = viewModel.Contact;
-
-              if (ModelState.IsValid)
+            
+            if (ModelState.IsValid)
             {
                 contact.CounterAgent = await _counterAgentRepository.GetById(contact.CounterAgentId);
                 _contactRepository.Add(contact);
@@ -62,6 +63,35 @@ namespace OmniLine.Controllers
             {
                 return View("Error");
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var contact = await _contactRepository.GetById(id);
+            if(contact == null) return View("Error");
+            var vModel = new CreateContactVM()
+            {
+                Contact = contact,
+                Agents = await _counterAgentRepository.GetAll(),
+            };
+            return View("Edit",vModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id,CreateContactVM vModel)
+        {   
+            if(!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit contact");
+                vModel.Agents = await _counterAgentRepository.GetAll();
+                return View("Edit", vModel);
+            }
+            var contact = vModel.Contact;
+            contact.Id = id;
+            contact.DateEdit = DateTime.Now.ToString();
+            _contactRepository.Update(contact);
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -40,5 +40,49 @@ namespace OmniLine.Controllers
             }
             else return View(vmModel);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var counterAgents = await _counterAgentRepository.GetById(id);
+            if(counterAgents != null)
+            {
+                _counterAgentRepository.Delete(counterAgents);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Error");
+            }
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var agent = await _counterAgentRepository.GetById(id);
+            if(agent == null) return View("Error");
+            var vModel = new CreateAgentVM()
+            {
+                Agent = agent
+            };
+            return View(vModel);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, CreateAgentVM vModel)
+        {
+            if(!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit agent");
+                return View("Edit",vModel);
+            }
+            var agent = vModel.Agent;
+            agent.CounterAgentId = id;
+            agent.DateEdit = DateTime.Now.ToString();
+            _counterAgentRepository.Update(agent);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace OmniLine.Models
     {
         [Key]
         public int Id { get; set; }
-        public string DateCreate { get; set; }
+        public string? DateCreate { get; set; }
         public string DateEdit { get; set; } = " ";
         public string FIO { get; set; }
         public string Email { get; set; }

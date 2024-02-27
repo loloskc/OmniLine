@@ -25,8 +25,8 @@
                     <td>@item.DateCreate</td>
                     <td>@item.DateEdit</td>
                     <td align="center">
-                        <button type="button" class="btn btn-primary">Удалить</button>
-                        <button type="button" class="btn btn-primary">Изменить</button>
+                        <a asp-controller="CounterAgent" asp-action="Delete" asp-route-id="@item.CounterAgentId" type="button" class="btn btn-primary">Удалить</a>
+                        <a asp-controller="CounterAgent" asp-action="Edit" asp-route-id="@item.CounterAgentId" type="button" class="btn btn-primary">Изменить</a>
                     </td>
                 </tr>
             }
