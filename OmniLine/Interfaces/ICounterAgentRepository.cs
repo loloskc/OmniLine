@@ -10,6 +10,7 @@ namespace OmniLine.Interfaces
         bool Save();
         Task<IEnumerable<CounterAgent>> GetAll();
         Task<CounterAgent> GetById(int id);
+        Task<CounterAgent> GetByIdContact(int id);
         Task<int> GetCount();
         
     }

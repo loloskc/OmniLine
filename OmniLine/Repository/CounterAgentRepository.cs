@@ -36,6 +36,11 @@ namespace OmniLine.Repository
             return await _context.CounterAgents.FirstOrDefaultAsync(i => i.CounterAgentId == id);
         }
 
+        public async Task<CounterAgent> GetByIdContact (int id)
+        {
+            return await _context.CounterAgents.Include(i => i.Contacts).FirstOrDefaultAsync(i => i.CounterAgentId == id);
+        }
+
         public async Task<int> GetCount()
         {
             return await _context.CounterAgents.CountAsync();

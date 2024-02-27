@@ -20,10 +20,10 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <th scope="row">@item.CounterAgentId</th>
-                    <td>@item.Name</td>
-                    <td>@item.DateCreate</td>
-                    <td>@item.DateEdit</td>
+                    <th scope="row" onclick="openDetail(@item.CounterAgentId)" >@item.CounterAgentId</th>
+                    <td onclick="openDetail(@item.CounterAgentId)" >@item.Name</td>
+                    <td onclick="openDetail(@item.CounterAgentId)" >@item.DateCreate</td>
+                    <td onclick="openDetail(@item.CounterAgentId)" >@item.DateEdit</td>
                     <td align="center">
                         <a asp-controller="CounterAgent" asp-action="Delete" asp-route-id="@item.CounterAgentId" type="button" class="btn btn-primary">Удалить</a>
                         <a asp-controller="CounterAgent" asp-action="Edit" asp-route-id="@item.CounterAgentId" type="button" class="btn btn-primary">Изменить</a>
@@ -33,3 +33,12 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/javascript">
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    function openDetail(id) {
+        window.open(currentURL + '/Detail/' + id, '_blank');
+        console.log(currentURL + '/' + id);
+    }
+</script>

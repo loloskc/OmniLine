@@ -84,5 +84,12 @@ namespace OmniLine.Controllers
             _counterAgentRepository.Update(agent);
             return RedirectToAction("Index");
         }
+
+        
+        public async Task<IActionResult> Detail(int id)
+        {
+            var agent = await _counterAgentRepository.GetByIdContact(id);
+            return View(agent);   
+        }
     }
 }
