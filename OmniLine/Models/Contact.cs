@@ -6,13 +6,13 @@ namespace OmniLine.Models
     public class Contact
     {
         [Key]
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string DateCreate { get; set; }
-        public string DateEdit { get; set; }
+        public string DateEdit { get; set; } = " ";
         public string FIO { get; set; }
         public string Email { get; set; }
         [ForeignKey("CounterAgent")]
-        public long? CounterAgentId { get; set; }
+        public int CounterAgentId { get; set; }
         
         public CounterAgent? CounterAgent { get; set; }
     }

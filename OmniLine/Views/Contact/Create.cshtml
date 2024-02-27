@@ -4,8 +4,23 @@
 <form method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="form-group">
         <label>ФИО</label>
-        <input class="form-control" placeholder="ФИО">
+        <input asp-for="Contact.FIO" class="form-control" placeholder="ФИО">
         <span class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Contact.Email" class="form-control" placeholder="Email">
+        <span class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Статус</label>
+        <select asp-for="Contact.CounterAgentId" class="form-control form-control-lg">
+            @foreach (var item in Model.Agents)
+            {
+                <option value="@item.CounterAgentId">@item.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Contact.CounterAgentId" class="text-danger"></span>
     </div>
     
 
