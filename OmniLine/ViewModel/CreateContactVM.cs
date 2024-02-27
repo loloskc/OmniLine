@@ -10,8 +10,7 @@ namespace OmniLine.ViewModel
 
         public CreateContactVM()
         {
-            Contact contact = new Contact();
-            Contact = contact;
+            Contact = new Contact();
             Contact.DateCreate = DateTime.Now.ToString();
         }
         public CreateContactVM(CreateContactVM vmodel)

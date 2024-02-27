@@ -1,0 +1,14 @@
+﻿@using OmniLine.ViewModel;
+@model CreateAgentVM
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Название контрагента</label>
+        <input asp-for="Agent.Name" class="form-control" placeholder="Название контрагента">
+        <span class="text-danger"></span>
+    </div>
+
+
+    <hr />
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
